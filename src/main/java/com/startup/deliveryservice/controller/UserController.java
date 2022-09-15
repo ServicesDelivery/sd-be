@@ -1,6 +1,7 @@
 package com.startup.deliveryservice.controller;
 
 import com.startup.deliveryservice.dto.RegisterUserDto;
+import com.startup.deliveryservice.dto.UserInfoDto;
 import com.startup.deliveryservice.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/users")
 @AllArgsConstructor
-public class UserControllers {
+public class UserController {
 
   private final UserService userService;
 
@@ -28,5 +29,10 @@ public class UserControllers {
   @PostMapping("/registration")
   public void registerNewUser(@Validated @RequestBody RegisterUserDto registerUserDto) {
     userService.registerNewUser(registerUserDto);
+  }
+
+  @GetMapping("/info/{id}")
+  public ResponseEntity<UserInfoDto> getUserById(@PathVariable Integer id) {
+    return ResponseEntity.ok(userService.getUserById(id));
   }
 }

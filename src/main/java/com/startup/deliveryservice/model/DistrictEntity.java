@@ -13,8 +13,8 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "category")
-public class CategoryEntity {
+@Table(name = "district")
+public class DistrictEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

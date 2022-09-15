@@ -18,27 +18,16 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "company")
-public class CompanyEntity {
+@Table(name = "user_info")
+public class UserInfoEntity {
 
   @Id
+  @Column(name = "user_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
-
-  @Column(name = "name", nullable = false)
-  private String name;
-
-  @Column(name = "description", nullable = false)
-  private String description;
+  private Integer userId;
 
   @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "company_category", joinColumns = @JoinColumn(name = "company_id"),
-      inverseJoinColumns = @JoinColumn(name = "category_id"))
-  private List<CategoryEntity> category;
-
-  @Column(name = "price")
-  private Integer price;
-
-  @Column(name = "rating")
-  private Double rating;
+  @JoinTable(name = "user_info_address", joinColumns = @JoinColumn(name = "user_info_id"),
+      inverseJoinColumns = @JoinColumn(name = "address_id"))
+  private List<AddressEntity> addresses;
 }
