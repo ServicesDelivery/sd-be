@@ -1,6 +1,7 @@
 package com.startup.deliveryservice.mapper;
 
 import com.startup.deliveryservice.dto.AddressDto;
+import com.startup.deliveryservice.dto.request.AddressRequestDto;
 import com.startup.deliveryservice.model.AddressEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -10,4 +11,6 @@ import org.mapstruct.ReportingPolicy;
 public interface AddressMapper {
 
   AddressDto toDto(AddressEntity entity);
+
+  AddressEntity toEntity(AddressRequestDto dto);
 }

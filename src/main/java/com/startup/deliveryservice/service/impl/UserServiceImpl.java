@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
         .build());
   }
 
+  @Override
   public UserInfoDto getUserById(Integer id) {
     UserInfoEntity user = userInfoRepository.findByUserId(id)
         .orElseThrow(() -> new NoSuchElementException("No user info with id: " + id));

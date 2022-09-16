@@ -32,6 +32,6 @@ public class AddressEntity {
   @Column(name = "house", nullable = false)
   private String house;
 
-  @Column(name = "apartment")
-  private String apartment;
+  @Column(name = "flat")
+  private String flat;
 }

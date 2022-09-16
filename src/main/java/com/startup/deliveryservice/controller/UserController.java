@@ -2,6 +2,9 @@ package com.startup.deliveryservice.controller;
 
 import com.startup.deliveryservice.dto.RegisterUserDto;
 import com.startup.deliveryservice.dto.UserInfoDto;
+import com.startup.deliveryservice.dto.request.AddressRequestDto;
+import com.startup.deliveryservice.model.UserInfoEntity;
+import com.startup.deliveryservice.service.AddressService;
 import com.startup.deliveryservice.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
   private final UserService userService;
+  private final AddressService addressService;
 
   @GetMapping("/{username}")
   public ResponseEntity<String> getUserByUsername(@PathVariable String username) {
@@ -34,5 +38,10 @@ public class UserController {
   @GetMapping("/info/{id}")
   public ResponseEntity<UserInfoDto> getUserById(@PathVariable Integer id) {
     return ResponseEntity.ok(userService.getUserById(id));
+  }
+
+  @PostMapping("/info/addresses")
+  public ResponseEntity<UserInfoEntity> addAddressToUser(@RequestBody AddressRequestDto addressRequestDto) {
+    return ResponseEntity.ok(addressService.addAddressToUser(addressRequestDto));
   }
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +27,7 @@ public class UserInfoEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer userId;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinTable(name = "user_info_address", joinColumns = @JoinColumn(name = "user_info_id"),
       inverseJoinColumns = @JoinColumn(name = "address_id"))
   private List<AddressEntity> addresses;
