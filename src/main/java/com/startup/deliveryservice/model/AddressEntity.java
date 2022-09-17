@@ -22,8 +22,12 @@ public class AddressEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
+  @ManyToOne()
+  @JoinColumn(name = "user_info_id", nullable = false)
+  private UserInfoEntity userInfo;
+
   @ManyToOne
-  @JoinColumn(name="district_id", nullable=false)
+  @JoinColumn(name = "district_id", nullable = false)
   private DistrictEntity district;
 
   @Column(name = "street", nullable = false)

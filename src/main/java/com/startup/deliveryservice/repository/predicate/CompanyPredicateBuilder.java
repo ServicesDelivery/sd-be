@@ -28,6 +28,7 @@ public class CompanyPredicateBuilder {
     List<Condition> conditions = new ArrayList<>();
 
     generateNameCondition(conditions);
+    generateRatingCondition(conditions);
 
     return DSL.and(conditions);
   }
@@ -35,6 +36,15 @@ public class CompanyPredicateBuilder {
   private void generateNameCondition(List<Condition> conditions) {
     if (Objects.nonNull(dto.getName())) {
       conditions.add(COMPANY.NAME.like("%" + dto.getName() + "%"));
+    }
+  }
+
+  private void generateRatingCondition(List<Condition> conditions) {
+    if (Objects.nonNull(dto.getRatingFrom())) {
+      conditions.add(COMPANY.RATING.ge(dto.getRatingFrom()));
+    }
+    if (Objects.nonNull(dto.getRatingTo())) {
+      conditions.add(COMPANY.RATING.le(dto.getRatingTo()));
     }
   }
 }
