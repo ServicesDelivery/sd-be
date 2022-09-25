@@ -22,7 +22,7 @@ public class AddressEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne()
+  @ManyToOne
   @JoinColumn(name = "user_info_id", nullable = false)
   private UserInfoEntity userInfo;
 
