@@ -13,4 +13,6 @@ public interface CompanyService {
 
   List<CompanyQueueDto> getCompanies(Pageable pageable, CompanyQueueFilterDto dto);
 
+  CompanyDto getCompanyById(Integer id);
+
 }

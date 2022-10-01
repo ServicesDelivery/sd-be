@@ -68,7 +68,7 @@ public class Company extends TableImpl<CompanyRecord> {
     /**
      * The column <code>delivery.company.price</code>.
      */
-    public final TableField<CompanyRecord, Integer> PRICE = createField(DSL.name("price"), SQLDataType.INTEGER, this, "");
+    public final TableField<CompanyRecord, String> PRICE = createField(DSL.name("price"), SQLDataType.VARCHAR(20), this, "");
 
     /**
      * The column <code>delivery.company.rating</code>.
@@ -167,14 +167,14 @@ public class Company extends TableImpl<CompanyRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<Integer, String, String, Integer, Double> fieldsRow() {
+    public Row5<Integer, String, String, String, Double> fieldsRow() {
         return (Row5) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function5<? super Integer, ? super String, ? super String, ? super Integer, ? super Double, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function5<? super Integer, ? super String, ? super String, ? super String, ? super Double, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -182,7 +182,7 @@ public class Company extends TableImpl<CompanyRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function5<? super Integer, ? super String, ? super String, ? super Integer, ? super Double, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function5<? super Integer, ? super String, ? super String, ? super String, ? super Double, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

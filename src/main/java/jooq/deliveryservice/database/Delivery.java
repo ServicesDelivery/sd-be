@@ -7,10 +7,14 @@ package jooq.deliveryservice.database;
 import java.util.Arrays;
 import java.util.List;
 
+import jooq.deliveryservice.database.tables.Address;
 import jooq.deliveryservice.database.tables.Category;
 import jooq.deliveryservice.database.tables.Company;
 import jooq.deliveryservice.database.tables.CompanyCategory;
+import jooq.deliveryservice.database.tables.District;
+import jooq.deliveryservice.database.tables.Subcategory;
 import jooq.deliveryservice.database.tables.User;
+import jooq.deliveryservice.database.tables.UserInfo;
 
 import org.jooq.Catalog;
 import org.jooq.Table;
@@ -31,6 +35,11 @@ public class Delivery extends SchemaImpl {
     public static final Delivery DELIVERY = new Delivery();
 
     /**
+     * The table <code>delivery.address</code>.
+     */
+    public final Address ADDRESS = Address.ADDRESS;
+
+    /**
      * The table <code>delivery.category</code>.
      */
     public final Category CATEGORY = Category.CATEGORY;
@@ -46,9 +55,24 @@ public class Delivery extends SchemaImpl {
     public final CompanyCategory COMPANY_CATEGORY = CompanyCategory.COMPANY_CATEGORY;
 
     /**
+     * The table <code>delivery.district</code>.
+     */
+    public final District DISTRICT = District.DISTRICT;
+
+    /**
+     * The table <code>delivery.subcategory</code>.
+     */
+    public final Subcategory SUBCATEGORY = Subcategory.SUBCATEGORY;
+
+    /**
      * The table <code>delivery.user</code>.
      */
     public final User USER = User.USER;
+
+    /**
+     * The table <code>delivery.user_info</code>.
+     */
+    public final UserInfo USER_INFO = UserInfo.USER_INFO;
 
     /**
      * No further instances allowed
@@ -66,10 +90,14 @@ public class Delivery extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.asList(
+            Address.ADDRESS,
             Category.CATEGORY,
             Company.COMPANY,
             CompanyCategory.COMPANY_CATEGORY,
-            User.USER
+            District.DISTRICT,
+            Subcategory.SUBCATEGORY,
+            User.USER,
+            UserInfo.USER_INFO
         );
     }
 }

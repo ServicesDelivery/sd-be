@@ -3,6 +3,7 @@ package com.startup.deliveryservice.service.impl;
 import com.startup.deliveryservice.dto.CompanyDto;
 import com.startup.deliveryservice.dto.CompanyQueueDto;
 import com.startup.deliveryservice.dto.CompanyQueueFilterDto;
+import com.startup.deliveryservice.exception.NoSuchElementException;
 import com.startup.deliveryservice.mapper.CompanyMapper;
 import com.startup.deliveryservice.model.CompanyEntity;
 import com.startup.deliveryservice.repository.CompanyDao;
@@ -35,5 +36,13 @@ public class CompanyServiceImpl implements CompanyService {
     Condition conditions = CompanyPredicateBuilder.from(dto).build();
     return companyDao.getAggregatedCompanies(pageable, conditions);
   }
+
+  @Override
+  public CompanyDto getCompanyById(Integer id) {
+    CompanyEntity company = companyRepository.findById(id)
+        .orElseThrow(() -> new NoSuchElementException("No company with id: " + id));
+    return companyMapper.toDto(company);
+  }
+
 
 }

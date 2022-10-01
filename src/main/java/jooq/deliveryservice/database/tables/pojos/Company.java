@@ -18,7 +18,7 @@ public class Company implements Serializable {
     private Integer id;
     private String name;
     private String description;
-    private Integer price;
+    private String price;
     private Double rating;
 
     public Company() {}
@@ -35,7 +35,7 @@ public class Company implements Serializable {
         Integer id,
         String name,
         String description,
-        Integer price,
+        String price,
         Double rating
     ) {
         this.id = id;
@@ -90,14 +90,14 @@ public class Company implements Serializable {
     /**
      * Getter for <code>delivery.company.price</code>.
      */
-    public Integer getPrice() {
+    public String getPrice() {
         return this.price;
     }
 
     /**
      * Setter for <code>delivery.company.price</code>.
      */
-    public void setPrice(Integer price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

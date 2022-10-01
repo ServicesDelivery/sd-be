@@ -17,7 +17,7 @@ import static jooq.deliveryservice.database.tables.Company.COMPANY;
 public class CompanyQueueMapper {
 
   public List<CompanyQueueDto> mapList(
-      Result<Record6<Integer, String, String, Integer, Double, String>> records) {
+      Result<Record6<Integer, String, String, String, Double, String>> records) {
     List<CompanyQueueDto> companyDtos = new ArrayList<>();
     for (Record record : records) {
       CompanyQueueDto dto = new CompanyQueueDto();

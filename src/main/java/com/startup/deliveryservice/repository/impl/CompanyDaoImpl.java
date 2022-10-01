@@ -37,9 +37,10 @@ public class CompanyDaoImpl implements CompanyDao {
             .fetch());
   }
 
-  private SelectHavingStep<Record6<Integer, String, String, Integer, Double, String>> getCompanies(
+  private SelectHavingStep<Record6<Integer, String, String, String, Double, String>> getCompanies(
       Condition conditions) {
-    return dsl.select(COMPANY.ID,
+    return dsl.select(
+            COMPANY.ID,
             COMPANY.NAME,
             COMPANY.DESCRIPTION,
             COMPANY.PRICE,

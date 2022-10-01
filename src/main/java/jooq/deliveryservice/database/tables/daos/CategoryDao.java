@@ -82,4 +82,19 @@ public class CategoryDao extends DAOImpl<CategoryRecord, jooq.deliveryservice.da
     public List<jooq.deliveryservice.database.tables.pojos.Category> fetchByName(String... values) {
         return fetch(Category.CATEGORY.NAME, values);
     }
+
+    /**
+     * Fetch records that have <code>description BETWEEN lowerInclusive AND
+     * upperInclusive</code>
+     */
+    public List<jooq.deliveryservice.database.tables.pojos.Category> fetchRangeOfDescription(String lowerInclusive, String upperInclusive) {
+        return fetchRange(Category.CATEGORY.DESCRIPTION, lowerInclusive, upperInclusive);
+    }
+
+    /**
+     * Fetch records that have <code>description IN (values)</code>
+     */
+    public List<jooq.deliveryservice.database.tables.pojos.Category> fetchByDescription(String... values) {
+        return fetch(Category.CATEGORY.DESCRIPTION, values);
+    }
 }

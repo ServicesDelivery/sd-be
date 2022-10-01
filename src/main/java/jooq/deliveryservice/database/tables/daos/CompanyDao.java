@@ -102,14 +102,14 @@ public class CompanyDao extends DAOImpl<CompanyRecord, jooq.deliveryservice.data
      * Fetch records that have <code>price BETWEEN lowerInclusive AND
      * upperInclusive</code>
      */
-    public List<jooq.deliveryservice.database.tables.pojos.Company> fetchRangeOfPrice(Integer lowerInclusive, Integer upperInclusive) {
+    public List<jooq.deliveryservice.database.tables.pojos.Company> fetchRangeOfPrice(String lowerInclusive, String upperInclusive) {
         return fetchRange(Company.COMPANY.PRICE, lowerInclusive, upperInclusive);
     }
 
     /**
      * Fetch records that have <code>price IN (values)</code>
      */
-    public List<jooq.deliveryservice.database.tables.pojos.Company> fetchByPrice(Integer... values) {
+    public List<jooq.deliveryservice.database.tables.pojos.Company> fetchByPrice(String... values) {
         return fetch(Company.COMPANY.PRICE, values);
     }
 
