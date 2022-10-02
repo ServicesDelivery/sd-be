@@ -32,7 +32,7 @@ public class FieldsServiceImpl implements FieldsService {
     /*return categoryRepository.findAllByOrderByName()
         .stream()
         .collect(toMap(CategoryEntity::getId, CategoryEntity::getName));*/
-    List<CategoryEntity> categories = categoryRepository.findAllByOrderByName();
+    List<CategoryEntity> categories = categoryRepository.findAllCategories();
     return categoryMapper.toDtoList(categories);
   }
 }

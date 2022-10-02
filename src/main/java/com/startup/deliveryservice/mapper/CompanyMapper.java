@@ -8,7 +8,7 @@ import org.mapstruct.ReportingPolicy;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    uses = {CategoryMapper.class, ServiceMapper.class})
+    uses = {CategoryCompanyInfoMapper.class, ServiceMapper.class})
 public interface CompanyMapper {
 
   CompanyDto toDto(CompanyEntity entity);

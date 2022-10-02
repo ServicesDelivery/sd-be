@@ -5,6 +5,7 @@ import com.startup.deliveryservice.dto.CompanyQueueDto;
 import com.startup.deliveryservice.dto.CompanyQueueFilterDto;
 import com.startup.deliveryservice.service.CompanyService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,11 @@ public class CompanyController {
   @GetMapping()
   public ResponseEntity<List<CompanyQueueDto>> getAllCompanies(Pageable pageable, CompanyQueueFilterDto dto) {
     return ResponseEntity.ok(companyService.getCompanies(pageable, dto));
+  }
+
+  @GetMapping("/v2")
+  public ResponseEntity<Page<CompanyDto>> getAllCompaniesV2(Pageable pageable, CompanyQueueFilterDto dto) {
+    return ResponseEntity.ok(companyService.getCompaniesV2(pageable, dto));
   }
 
   @GetMapping("/{id}")

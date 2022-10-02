@@ -3,13 +3,15 @@ package com.startup.deliveryservice.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,7 +31,10 @@ public class CategoryEntity {
   @Column(name = "description", length = 2000)
   private String description;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-  private List<SubCategoryEntity> subCategories;
+  @ManyToOne(fetch = FetchType.LAZY)
+  private CategoryEntity parentCategory;
+
+  @OneToMany(mappedBy = "parentCategory")
+  private Set<CategoryEntity> subCategories = new HashSet<>();
 
 }

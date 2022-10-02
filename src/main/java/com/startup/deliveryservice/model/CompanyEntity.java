@@ -45,7 +45,7 @@ public class CompanyEntity {
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "company_category", joinColumns = @JoinColumn(name = "company_id"),
       inverseJoinColumns = @JoinColumn(name = "category_id"))
-  private List<CategoryEntity> category;
+  private List<CategoryEntity> categories;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
   private List<ServiceEntity> services;
