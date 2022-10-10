@@ -1,34 +1,17 @@
 package com.startup.deliveryservice.mapper;
 
 import com.startup.deliveryservice.dto.CompanyQueueDto;
-import lombok.RequiredArgsConstructor;
-import org.jooq.Record;
-import org.jooq.Record6;
-import org.jooq.Result;
-import org.springframework.stereotype.Component;
+import com.startup.deliveryservice.model.CompanyEntity;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static jooq.deliveryservice.database.tables.Company.COMPANY;
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
+    uses = {CategoryCompanyInfoMapper.class})
+public interface CompanyQueueMapper {
 
-@Component
-@RequiredArgsConstructor
-public class CompanyQueueMapper {
+  CompanyQueueDto toDto(CompanyEntity entity);
 
-  public List<CompanyQueueDto> mapList(
-      Result<Record6<Integer, String, String, String, Double, String>> records) {
-    List<CompanyQueueDto> companyDtos = new ArrayList<>();
-    for (Record record : records) {
-      CompanyQueueDto dto = new CompanyQueueDto();
-      dto.setId(record.getValue(COMPANY.ID));
-      dto.setName(record.getValue(COMPANY.NAME));
-      dto.setDescription(record.getValue(COMPANY.DESCRIPTION));
-      dto.setPrice(record.getValue(COMPANY.PRICE));
-      dto.setRating(record.getValue(COMPANY.RATING));
-      dto.setCategories(record.get("categories", String.class));
-      companyDtos.add(dto);
-    }
-    return companyDtos;
-  }
+  List<CompanyQueueDto> toDtoList(List<CompanyEntity> entities);
 }
