@@ -1,7 +1,7 @@
 package com.startup.deliveryservice.repository.impl;
 
-import com.startup.deliveryservice.dto.CompanyQueueDto;
-import com.startup.deliveryservice.mapper.CompanyQueueMapper;
+import com.startup.deliveryservice.dto.CompanyQueueDtoV1;
+import com.startup.deliveryservice.mapper.CompanyQueueMapperV1;
 import com.startup.deliveryservice.repository.CompanyDao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,12 +24,12 @@ import static org.jooq.impl.DSL.groupConcat;
 @RequiredArgsConstructor
 public class CompanyDaoImpl implements CompanyDao {
 
-  private final CompanyQueueMapper companyQueueMapper;
+  private final CompanyQueueMapperV1 companyQueueMapperV1;
   private final DSLContext dsl;
 
   @Override
-  public List<CompanyQueueDto> getAggregatedCompanies(Pageable pageable, Condition conditions) {
-    return companyQueueMapper.mapList(
+  public List<CompanyQueueDtoV1> getAggregatedCompanies(Pageable pageable, Condition conditions) {
+    return companyQueueMapperV1.mapList(
         getCompanies(conditions)
             //.orderBy(DSL.field("name asc"))
             .limit(pageable.getPageSize())

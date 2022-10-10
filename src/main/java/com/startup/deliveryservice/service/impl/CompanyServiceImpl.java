@@ -2,9 +2,11 @@ package com.startup.deliveryservice.service.impl;
 
 import com.startup.deliveryservice.dto.CompanyDto;
 import com.startup.deliveryservice.dto.CompanyQueueDto;
+import com.startup.deliveryservice.dto.CompanyQueueDtoV1;
 import com.startup.deliveryservice.dto.CompanyQueueFilterDto;
 import com.startup.deliveryservice.exception.NoSuchElementException;
 import com.startup.deliveryservice.mapper.CompanyMapper;
+import com.startup.deliveryservice.mapper.CompanyQueueMapper;
 import com.startup.deliveryservice.model.CompanyEntity;
 import com.startup.deliveryservice.repository.CompanyDao;
 import com.startup.deliveryservice.repository.CompanyRepository;
@@ -25,6 +27,7 @@ public class CompanyServiceImpl implements CompanyService {
 
   private final CompanyRepository companyRepository;
   private final CompanyMapper companyMapper;
+  private final CompanyQueueMapper companyQueueMapper;
   private final CompanyDao companyDao;
 
   @Override
@@ -34,16 +37,16 @@ public class CompanyServiceImpl implements CompanyService {
   }
 
   @Override
-  public List<CompanyQueueDto> getCompanies(Pageable pageable, CompanyQueueFilterDto dto) {
+  public List<CompanyQueueDtoV1> getCompaniesV1(Pageable pageable, CompanyQueueFilterDto dto) {
     Condition conditions = CompanyPredicateBuilder.from(dto).build();
     return companyDao.getAggregatedCompanies(pageable, conditions);
   }
 
   @Override
-  public Page<CompanyDto> getCompaniesV2(Pageable pageable, CompanyQueueFilterDto dto) {
+  public Page<CompanyQueueDto> getCompanies(Pageable pageable, CompanyQueueFilterDto dto) {
     CompanySpecification predicates = new CompanySpecification(dto);
     Page<CompanyEntity> companies = companyRepository.findAll(predicates, pageable);
-    return companies.map(companyMapper::toDto);
+    return companies.map(companyQueueMapper::toDto);
   }
 
   @Override

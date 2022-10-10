@@ -12,8 +12,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.stream.Collectors.toMap;
-
 @Service
 @AllArgsConstructor
 public class FieldsServiceImpl implements FieldsService {
@@ -24,11 +22,12 @@ public class FieldsServiceImpl implements FieldsService {
   @Override
   public Map<String, Object> getFields() {
     Map<String, Object> fields = new LinkedHashMap<>();
-    fields.put("categories", getCategoryFields());
+    //fields.put("categories", getCategoryFields());
     return fields;
   }
 
-  private List<CategoryDto> getCategoryFields() {
+  @Override
+  public List<CategoryDto> getCategoryFields() {
     /*return categoryRepository.findAllByOrderByName()
         .stream()
         .collect(toMap(CategoryEntity::getId, CategoryEntity::getName));*/

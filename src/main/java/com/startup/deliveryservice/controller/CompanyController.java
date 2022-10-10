@@ -2,6 +2,7 @@ package com.startup.deliveryservice.controller;
 
 import com.startup.deliveryservice.dto.CompanyDto;
 import com.startup.deliveryservice.dto.CompanyQueueDto;
+import com.startup.deliveryservice.dto.CompanyQueueDtoV1;
 import com.startup.deliveryservice.dto.CompanyQueueFilterDto;
 import com.startup.deliveryservice.service.CompanyService;
 import lombok.AllArgsConstructor;
@@ -27,14 +28,14 @@ public class CompanyController {
     return ResponseEntity.ok(companyService.getAllCompanies());
   }
 
-  @GetMapping()
-  public ResponseEntity<List<CompanyQueueDto>> getAllCompanies(Pageable pageable, CompanyQueueFilterDto dto) {
-    return ResponseEntity.ok(companyService.getCompanies(pageable, dto));
+  @GetMapping("v1")
+  public ResponseEntity<List<CompanyQueueDtoV1>> getAllCompanies(Pageable pageable, CompanyQueueFilterDto dto) {
+    return ResponseEntity.ok(companyService.getCompaniesV1(pageable, dto));
   }
 
-  @GetMapping("/v2")
-  public ResponseEntity<Page<CompanyDto>> getAllCompaniesV2(Pageable pageable, CompanyQueueFilterDto dto) {
-    return ResponseEntity.ok(companyService.getCompaniesV2(pageable, dto));
+  @GetMapping()
+  public ResponseEntity<Page<CompanyQueueDto>> getAllCompaniesV2(Pageable pageable, CompanyQueueFilterDto dto) {
+    return ResponseEntity.ok(companyService.getCompanies(pageable, dto));
   }
 
   @GetMapping("/{id}")
