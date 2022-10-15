@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,9 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -42,10 +40,8 @@ public class CompanyEntity {
   @Column(name = "rating")
   private Double rating;
 
-  @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "company_category", joinColumns = @JoinColumn(name = "company_id"),
-      inverseJoinColumns = @JoinColumn(name = "category_id"))
-  private List<CategoryEntity> categories;
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", cascade = CascadeType.ALL)
+  private List<CompanyCategoryEntity> categories;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
   private List<ServiceEntity> services;

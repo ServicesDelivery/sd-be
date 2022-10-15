@@ -14,5 +14,6 @@ public class CategoryCompanyInfoDto {
   private Integer id;
   private String name;
   private String description;
+  private Integer order;
   private Integer parentCategoryId;
 }
