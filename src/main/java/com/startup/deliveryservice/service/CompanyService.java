@@ -13,7 +13,7 @@ public interface CompanyService {
 
   List<CompanyDto> getAllCompanies();
 
-  List<CompanyQueueDtoV1> getCompaniesV1(Pageable pageable, CompanyQueueFilterDto dto);
+  //List<CompanyQueueDtoV1> getCompaniesV1(Pageable pageable, CompanyQueueFilterDto dto);
 
   Page<CompanyQueueDto> getCompanies(Pageable pageable, CompanyQueueFilterDto dto);
 

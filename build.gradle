@@ -14,6 +14,7 @@ buildscript {
 plugins {
     id 'org.springframework.boot' version '2.7.3'
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id "org.flywaydb.flyway" version "6.5.7"
     id 'java'
 }
 
@@ -62,6 +63,19 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+flyway {
+    url = 'jdbc:postgresql://localhost:5432/delivery'
+    user = 'postgres'
+    password = 'postgres'
+    schemas = ['delivery']
+    baselineOnMigrate = true
+    /*outOfOrder = true
+    validateOnMigrate = true
+    cleanDisabled = true
+    configurations = ['compileClasspath', 'flywayMigration']*/
+}
+
+/*
 import org.jooq.codegen.GenerationTool;
 import org.jooq.meta.jaxb.*;
 
@@ -87,4 +101,5 @@ task generate {
         GenerationTool.generate(configuration)
     }
 }
+*/
 

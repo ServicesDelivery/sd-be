@@ -28,10 +28,10 @@ public class CompanyController {
     return ResponseEntity.ok(companyService.getAllCompanies());
   }
 
-  @GetMapping("v1")
+  /*@GetMapping("v1")
   public ResponseEntity<List<CompanyQueueDtoV1>> getAllCompanies(Pageable pageable, CompanyQueueFilterDto dto) {
     return ResponseEntity.ok(companyService.getCompaniesV1(pageable, dto));
-  }
+  }*/
 
   @GetMapping()
   public ResponseEntity<Page<CompanyQueueDto>> getAllCompaniesV2(Pageable pageable, CompanyQueueFilterDto dto) {

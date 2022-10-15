@@ -1,22 +1,13 @@
 package com.startup.deliveryservice.mapper;
 
-import com.startup.deliveryservice.dto.CompanyQueueDtoV1;
 import lombok.RequiredArgsConstructor;
-import org.jooq.Record;
-import org.jooq.Record6;
-import org.jooq.Result;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static jooq.deliveryservice.database.tables.Company.COMPANY;
 
 @Component
 @RequiredArgsConstructor
 public class CompanyQueueMapperV1 {
 
-  public List<CompanyQueueDtoV1> mapList(
+ /* public List<CompanyQueueDtoV1> mapList(
       Result<Record6<Integer, String, String, String, Double, String>> records) {
     List<CompanyQueueDtoV1> companyDtos = new ArrayList<>();
     for (Record record : records) {
@@ -30,5 +21,5 @@ public class CompanyQueueMapperV1 {
       companyDtos.add(dto);
     }
     return companyDtos;
-  }
+  }*/
 }

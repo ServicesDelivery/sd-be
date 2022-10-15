@@ -14,7 +14,6 @@ import com.startup.deliveryservice.repository.predicate.CompanyPredicateBuilder;
 import com.startup.deliveryservice.service.CompanyService;
 import com.startup.deliveryservice.specification.CompanySpecification;
 import lombok.AllArgsConstructor;
-import org.jooq.Condition;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -36,11 +35,11 @@ public class CompanyServiceImpl implements CompanyService {
     return companyMapper.toDtoList(companies);
   }
 
-  @Override
+  /*@Override
   public List<CompanyQueueDtoV1> getCompaniesV1(Pageable pageable, CompanyQueueFilterDto dto) {
     Condition conditions = CompanyPredicateBuilder.from(dto).build();
     return companyDao.getAggregatedCompanies(pageable, conditions);
-  }
+  }*/
 
   @Override
   public Page<CompanyQueueDto> getCompanies(Pageable pageable, CompanyQueueFilterDto dto) {
