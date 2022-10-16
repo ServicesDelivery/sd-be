@@ -15,4 +15,5 @@ public class ServiceDto {
   private String name;
   private String description;
   private Integer price;
+  private Integer categoryId;
 }

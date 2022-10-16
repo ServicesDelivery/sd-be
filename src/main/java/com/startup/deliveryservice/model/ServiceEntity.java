@@ -36,4 +36,8 @@ public class ServiceEntity {
   @JoinColumn(name = "company_id", nullable = false)
   private CompanyEntity company;
 
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "category_id", nullable = false)
+  private CategoryEntity category;
+
 }
